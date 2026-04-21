@@ -25,6 +25,16 @@ public class AuthController {
         return authService.register(user);
     }
 
+    @PostMapping("/create-admin")
+    public  User createdAdmin(@RequestBody RegisterRequest request) {
+        User user = new User();
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        return authService.createAdmin(user);
+    }
+
     @PostMapping("/login")
     public User login(@RequestBody LoginRequest requestBody, HttpServletRequest request) {
         return authService.login(requestBody, request);
